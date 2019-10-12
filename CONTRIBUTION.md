@@ -5,9 +5,9 @@
 # Set up the project :
 * Fork the current repo to your remote system 
     - This is called your remote branch.
-* Clone the forked repo to your local machine ```https://github.com/<your user name>/contest.git```
+* Clone the forked repo to your local machine ```https://github.com/<your user name>/AutomatedAttendanceSystem.git```
     - This is your local branch.
-* run ```git remote add upstream https://github.com/harshraj22/contest.git``` . 
+* run ```git remote add upstream https://github.com/DestroyerAlpha/AutomatedAttendanceSystem.git``` . 
     - This sets default remote feature tracking branch for the current branch. Any git pull will bring commits from remote develop branch and merge to current switched branch. confirm using ```git remote -v ``` .
     - ```git fetch --all ```  to fetch everything from remote clone.
 * Checkout to local develop branch and set remote develop branch as tracking ```git checkout develop  ```.
