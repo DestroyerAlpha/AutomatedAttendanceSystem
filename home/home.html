@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Automated Attendance System</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+    </head>
+
+    <body>
+        <header>
+            <div class="site_name">
+                <h1>Attendance Management System</h1>
+            </div>
+        </header>
+
+        <div class="sline"></div>
+    <div class="sline"></div>
+    <section class="outer-section">
+        <aside class="left-pane">
+            <h1>Admin Login</h1>
+                <form action="./../authentication/adminauth.php" method="post">
+                    <ul>
+                        <li><input class="text-fields" type="text" name="name" placeholder="Username" required/> </li>
+                        <li><input class="text-fields" type="password" name="pass" placeholder="Password" required/></li>
+                        <li><input type="submit" class="submit-button" name="in" value="Login" /></li>
+                    </ul>
+                </form>
+        </aside>
+        <section class="middle-pane">
+            <h1>Student Login</h1>
+                <form action="./../authentication/studentauth.php" method="post">
+                    <ul>
+                        <li><input class="text-fields" type="text" name="name" placeholder="Username" required/> </li>
+                        <li><input class="text-fields" type="password" name="pass" placeholder="Password" required/></li>
+                        <li><input type="submit" class="submit-button" name="in" value="Login" /></li>
+                    </ul>
+                </form>
+        </section>
+        <aside class="right-pane">
+            <h1>Faculty Login</h1>
+                <form action="./../authentication/facauth.php" method="post">
+                    <ul>
+                        <li><input class="text-fields" type="text" name="name" placeholder="Username" required/> </li>
+                        <li><input class="text-fields" type="password" name="pass" placeholder="Password" required/></li>
+                        <li><input type="submit" class="submit-button" name="in" value="Login" /></li>
+                    </ul>
+                </form>
+        </aside>
+    </section>
+    <footer>
+        <p>Attendance Management System</p>
+    </footer>
+</body>
+</html>
