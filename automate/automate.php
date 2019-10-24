@@ -45,6 +45,13 @@
         else 
             die("Error while making authentication table.".mysqli_error($conn));
 
+        $tableas = "CREATE TABLE students (username varchar(10) NOT NULL PRIMARY KEY, name varchar (20) NOT NULL, dob date NOT NULL, no_of_courses int(6) DEFAULT 0)";
+
+        if(mysqli_query($conn,$tableas))
+            echo "Successfuly created authentication table. </br>";
+        else 
+            die("Error while making authentication table.".mysqli_error($conn));
+
     }
 
 ?>
