@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +32,7 @@
         </aside>
         <aside class="right-pane">
             <h1>Course Register</h1>
-                <form action="./../authentication/fcoursereg.php" method="post">
+                <form action="./../faculty/fcoursereg.php" method="post">
                     <ul>
                         <li>Course Name:- <input class="text-fields" type="text" name="cname" placeholder="Course Name" required/> </li>
                         <li>Course Code:- <input class="text-fields" type="text" name="ccode" placeholder="Course Code" required/></li>
@@ -39,7 +42,7 @@
         </aside>
     </section>
     <footer>
-        <p>Faculty User</p>
+        <p>Faculty: <?php echo $_SESSION['username']; ?></p>
     </footer>
 </body>
 </html>

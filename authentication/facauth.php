@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "./../sql_login/login.php";
 $conn = mysqli_connect($hostname,$username,$password,$database);
 
@@ -23,7 +23,9 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
             header('Location: ./../home/home.html');
         }
         else {
-            header('Location: ./../faculty/dashboard.html');
+            $_SESSION['username'] = $unsafename;
+            $_SESSION['password'] = $unsafepass;
+            header('Location: ./../faculty/dashboard.php');
         }
     }
 }
