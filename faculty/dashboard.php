@@ -1,5 +1,13 @@
 <?php
 session_start();
+require_once "./../sql_login/login.php";
+$conn = mysqli_connect($hostname,$username,$password,$database);
+$faculty_id = $_SESSION['username'];
+
+if (!$conn)
+{
+    die('<p>Connection failed: <p>' . mysqli_connect_error());
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +31,22 @@ session_start();
     <div class="sline"></div>
     <section class="outer-section">
         <aside class="left-pane">
-            <h1>Students Detail </h1>
-                <form action="./../authentication/studentdetails.php" method="post">
+            <h1>Courses Floated</h1>
+                <form action="./../faculty/studentdetails.php" method="post">
+                <ul>
+                <?php
+                    $query = "SELECT * FROM courses";
+                    $result = mysqli_query($conn, $query);
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        if ($faculty_id == $row['faculty_id'])
+                        {
+                            $course_code = $row['course_code'];
+                            echo "<li><input name=\"course\" type=\"radio\" value=$course_code>&emsp;".$row['course_name']."</li><br>";
+                        }
+                    }
+                ?>
+                </ul>
                     <ul>
                         <li><input type="submit" class="submit-button" name="in" value="View/Attendance" /></li>
                     </ul>
