@@ -9,7 +9,7 @@ session_start();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./../home/css/stylesheet.css" media="screen">
         <script>
 		function goBack() {
             window.location.href="./../student/studentattendance.php";
@@ -42,12 +42,12 @@ session_start();
                     <pre>
                         Present Dates
                     </pre>
-                    _END;
+_END;
                     }
 
                     $p = 0;
                     $k = 0;
-                    $user_t = $_SESSION["stu_user"]."present";
+                    $user_t = $_SESSION['stuser']."present";
                     $query  = "SELECT * FROM $user_t";
                     $result = $conn->query($query);
                     if (!$result) die ("Roll_present access failed");
@@ -65,7 +65,7 @@ session_start();
                             <pre>
                                 $r1,
                             </pre>
-                            _END;
+_END;
                         }
                     }
 
@@ -74,10 +74,10 @@ session_start();
                     <pre>
                         Absent Dates
                     </pre>
-                    _END;
+_END;
                     }
 
-                    $user_t = $_SESSION["stu_user"]."absent";
+                    $user_t = $_SESSION['stuser']."absent";
                     $query  = "SELECT * FROM $user_t";
                     $result = $conn->query($query);
                     if (!$result) die ("Roll_present access failed");
@@ -95,7 +95,7 @@ session_start();
                             <pre>
                                 $r1,
                             </pre>
-                            _END;
+_END;
                         }
                     }
 
@@ -112,7 +112,7 @@ session_start();
         </section>
     </section>
     <footer>
-        <p><?php echo "Welcome".$_SESSION["stu_user"]; ?></p>
+        <p><?php echo "Welcome".$_SESSION['stuser']; ?></p>
     </footer>
 </body>
 </html>

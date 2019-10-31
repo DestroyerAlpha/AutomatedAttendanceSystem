@@ -9,7 +9,7 @@ session_start();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./../home/css/stylesheet.css" media="screen">
         <script>
 		function goBack() {
             window.location.href="./../student/dashboard.php";
@@ -33,11 +33,11 @@ session_start();
                     require_once './../sql_login/login.php';
                     $conn = new mysqli($hostname, $username, $password, $database);
                     if ($conn->connect_error) die("Fatal Error");
-
-                    $user_t = $_SESSION["stu_user"]."m";
+                    $user = $_SESSION['stuser'];
+                    $user_t = $user."m";
                     $query  = "SELECT * FROM $user_t";
                     $result = $conn->query($query);
-                    if (!$result) die ("Database access failed");
+                    if (!$result) die ("Roll_No. access failed");
                                 
                     $rows = $result->num_rows;
                     for ($j = 0 ; $j < $rows ; ++$j)
@@ -59,8 +59,8 @@ session_start();
                     <form action="./../student/studentattendance1.php" method="post"></form>
                     <input type='hidden' name='view' value='yes'>
                     <input type='hidden' name='c_code' value='$r0'>
-                    <input type='submit' value='View Dates'></form>
-                    _END;
+                    <input type='submit' value='View Dates'></form><br><br><br>
+_END;
                     }
                     $result->close();
                     $conn->close();
