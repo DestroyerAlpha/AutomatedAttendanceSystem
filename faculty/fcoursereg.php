@@ -15,7 +15,7 @@ $course_code = $_POST['ccode'];
 $course_name = $_POST['cname'];
 
 $query1 = 'INSERT INTO courses(course_code,course_name,faculty_id) VALUES(?,?,?)';
-prepared_query($conn, $query1, [$course_code,$course_name,$username]);
+$query1 = prepared_query($conn, $query1, [$course_code,$course_name,$username]);
 
 if(!$query1)
 {
