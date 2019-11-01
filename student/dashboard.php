@@ -43,8 +43,8 @@ session_start();
                                     if (isset($_POST['register']) && isset($_POST['c_code']))
                                     {
                                         $course_code   = get_post($conn, 'c_code');
-                                        // $username = $_SESSION['stuser'];
-                                        $username = "180010030";
+                                        $username = $_SESSION['stuser'];
+                                        // $username = "180010030";
                                         $k=0;
                                         $query  = "SELECT * FROM $course_code";
                                         $result = $conn->query($query);
