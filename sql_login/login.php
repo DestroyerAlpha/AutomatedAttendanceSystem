@@ -1,9 +1,9 @@
 <?php
 
 // login details for mysql database
-$hostname = "";
-$username = "";
-$password = "";
+$hostname = "localhost";
+$username = "cyberlust";
+$password = "05111978";
 $database = "records";
 
 ?>
