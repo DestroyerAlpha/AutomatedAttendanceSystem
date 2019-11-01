@@ -11,14 +11,14 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./../home/css/stylesheet.css" media="screen">
         <script>
-		function goBack() {
+        function goBack() {
             window.location.href="./../student/studentattendance.php";
         }
         function goBack1() {
             alert("You have not register the Course");
             window.location.href="./../student/studentattendance.php";
-		}
-	    </script>
+        }
+        </script>
     </head>
 
     <body>
@@ -37,14 +37,12 @@ session_start();
                     require_once './../sql_login/login.php';
                     $conn = new mysqli($hostname, $username, $password, $database);
                     if ($conn->connect_error) die("Fatal Error");
-
                     echo <<<_END
                     <pre>
                         Present Dates
                     </pre>
 _END;
                     }
-
                     $p = 0;
                     $k = 0;
                     $user_t = $_SESSION['stuser']."present";
@@ -58,7 +56,6 @@ _END;
                         $row = $result->fetch_array(MYSQLI_NUM);
                         $r0 = htmlspecialchars($row[0]);
                         $r1 = htmlspecialchars($row[1]);
-
                         if($r0 == $_POST['c_code']){
                             $p=1;
                             echo <<<_END
@@ -68,15 +65,12 @@ _END;
 _END;
                         }
                     }
-
-
                     echo <<<_END
                     <pre>
                         Absent Dates
                     </pre>
 _END;
                     }
-
                     $user_t = $_SESSION['stuser']."absent";
                     $query  = "SELECT * FROM $user_t";
                     $result = $conn->query($query);
@@ -88,7 +82,6 @@ _END;
                         $row = $result->fetch_array(MYSQLI_NUM);
                         $r0 = htmlspecialchars($row[0]);
                         $r1 = htmlspecialchars($row[1]);
-
                         if($r0 == $_POST['c_code']){
                             $k=1;
                             echo <<<_END
@@ -98,7 +91,6 @@ _END;
 _END;
                         }
                     }
-
                     if($p==0 && $k==0){
                         echo "<script>goBack1();</script>";
                     }

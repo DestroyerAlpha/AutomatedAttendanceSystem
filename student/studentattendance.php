@@ -11,10 +11,10 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./../home/css/stylesheet.css" media="screen">
         <script>
-		function goBack() {
+        function goBack() {
             window.location.href="./../student/dashboard.php";
-		}
-	    </script>
+        }
+        </script>
     </head>
 
     <body>

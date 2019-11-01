@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 ?>
@@ -11,10 +12,10 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./../home/css/stylesheet.css" media="screen">
         <script>
-		function goBack(){
-		   alert("You have already register.");
-		}
-	    </script>
+        function goBack(){
+           alert("You have already register.");
+        }
+        </script>
     </head>
 
     <body>
@@ -49,18 +50,15 @@ session_start();
                                         $query  = "SELECT * FROM $course_code";
                                         $result = $conn->query($query);
                                         if (!$result) die ("c_code access failed");
-
                                         $rows = $result->num_rows;
                                         for ($j = 0 ; $j < $rows ; ++$j)
                                         {
                                             $row = $result->fetch_array(MYSQLI_NUM);
                                             $r0 = htmlspecialchars($row[0]);
-
                                             if($r0 === $username){
                                                 $k=1;
                                             }
                                         }
-
                                         if($k==1){
                                             echo "<script>goBack();</script>";
                                         }
@@ -68,11 +66,9 @@ session_start();
                                             $query    = "INSERT INTO $course_code VALUES ('$username')";
                                             $result   = $conn->query($query);
                                             if (!$result) die ("Insert failed<br><br>");
-
                                             $query  = "SELECT * FROM students";
                                             $result = $conn->query($query);
                                             if (!$result) die ("students access failed");
-
                                             $rows = $result->num_rows;
                                             for ($j = 0 ; $j < $rows ; ++$j)
                                             {
@@ -81,7 +77,6 @@ session_start();
                                                 $r1 = htmlspecialchars($row[1]);
                                                 $r2 = htmlspecialchars($row[2]);
                                                 $r3 = htmlspecialchars($row[3]);
-
                                                 if($r0 === $username){
                                                     $no_of_courses = $r3+1;
                                                     $query  = "UPDATE students SET no_of_courses='$no_of_courses' WHERE username='$username'";  
@@ -91,8 +86,6 @@ session_start();
                                             }
                                         }
                                     }
-
-
                                     $query  = "SELECT * FROM courses";
                                     $result = $conn->query($query);
                                     if (!$result) die ("courses access failed");
