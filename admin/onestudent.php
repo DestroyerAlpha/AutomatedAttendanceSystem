@@ -44,9 +44,15 @@ if(isset($_POST['stuinfo']))
 		echo "</table>";
 		echo "<br>";
 	}
+echo<<<_END
+<form action="toexcel.php" method="get">
+	<input type = "hidden" name = "table" value = $table>
+	<input type = "submit" name = submit value = "converttoxls">
+</form>
+_END;
 
-	$table = $stuinfo."present";
-	$query = "SELECT * FROM $table";
+	$table1 = $stuinfo."present";
+	$query = "SELECT * FROM $table1";
 	$result2 = $conn->query($query);
 	if (!$result2)
 	{ 
@@ -57,23 +63,29 @@ if(isset($_POST['stuinfo']))
 		echo "PRESENT<br>";
 		echo "<table border=1>";
 		echo "<tr><th>course_code</th><th>Date</th></tr>";
-		while($row = mysqli_fetch_array($result2))
+		while($row1 = mysqli_fetch_array($result2))
 		{
 		    echo "<tr>";
 		    echo "<td>";
-		    echo $row['course_code'];
+		    echo $row1['course_code'];
 		    echo "</td>";
 		    echo "<td>";
-		    echo $row['pdate'];
+		    echo $row1['pdate'];
 		    echo "</td>";
 		    echo "<td>";
 		}
 		echo "</table>";
 		echo "<br>";
 	}
+	echo<<<_END
+<form action="toexcel.php" method="get">
+	<input type = "hidden" name = "table" value = $table1>
+	<input type = "submit" name = submit value = "converttoxls">
+</form>
+_END;
 
-	$table = $stuinfo."absent";
-	$query = "SELECT * FROM $table";
+	$table2 = $stuinfo."absent";
+	$query = "SELECT * FROM $table2";
 	$result3 = $conn->query($query);
 	if (!$result3)
 	{ 
@@ -84,21 +96,28 @@ if(isset($_POST['stuinfo']))
 		echo "ABSENT<br>";
 		echo "<table border=1>";
 		echo "<tr><th>course_code</th><th>Date</th></tr>";
-		while($row = mysqli_fetch_array($result3))
+		while($row2 = mysqli_fetch_array($result3))
 		{
 		    echo "<tr>";
 		    echo "<td>";
-		    echo $row['course_code'];
+		    echo $row2['course_code'];
 		    echo "</td>";
 		    echo "<td>";
-		    echo $row['adate'];
+		    echo $row2['adate'];
 		    echo "</td>";
 		    echo "<td>";
 		}
 		echo "</table>";
 		echo "<br>";
 	}
+	echo<<<_END
+<form action="toexcel.php" method="get">
+	<input type = "hidden" name = "table" value = $table2>
+	<input type = "submit" name = submit value = "converttoxls">
+</form>
+_END;
 }
+
 echo '<a href = "admin.html">Go Back</a>';
 $conn->close();
 function get_post($conn, $var)

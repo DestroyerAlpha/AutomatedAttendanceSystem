@@ -16,7 +16,8 @@ if(isset($_SESSION['course']))
 		exit("<br>COURSE_CODE MUST BE FILLED<br>");
 
 	}
-	$query = "SELECT * FROM $course"."_attendance";
+	$table = $course."_attendance";
+	$query = "SELECT * FROM $table";
 	$result1 = $conn->query($query);
 	if (!$result1)
 	{ 
@@ -32,13 +33,13 @@ if(isset($_SESSION['course']))
 		{
 		    echo "<tr>";
 		    echo "<td>";
-		    echo $row['Date'];
+		    echo $row['attendance_date'];
 		    echo "</td>";
 		    echo "<td>";
 		    echo $row['present'];
 		    echo "</td>";
 		    echo "<td>";
-		    echo $row['absent'];
+		    echo $row['absentees'];
 		    echo "</td>";
 		    echo "</tr>";
 		}
@@ -46,11 +47,17 @@ if(isset($_SESSION['course']))
 		echo "<br>";
 	}
 }
+echo<<<_END
+<form action="toexcel.php" method="get">
+	<input type = "hidden" name = "table" value = $table>
+	<input type = "submit" name = submit value = "converttoxls">
+</form>
+_END;
 
 echo<<<_END
 <form action="searchbydate.php" method="get">
 	search by date
-	<input type="date" name="date"><br><br> 
+	<input type="date" name="date"> to <input type="date" name="date1"><br><br>
 	<input type="submit" name="submit" value="Search">
 </form>
 _END;
