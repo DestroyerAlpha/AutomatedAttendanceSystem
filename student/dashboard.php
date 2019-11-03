@@ -40,11 +40,15 @@ session_start();
                                     require_once './../sql_login/login.php';
                                     $conn = new mysqli($hostname, $username, $password, $database);
                                     if ($conn->connect_error) die("Fatal Error");
-                                    if (isset($_POST['register']) && isset($_POST['c_code']))
+                                    if (isset($_POST['register']) && isset($_POST['c_code']) && isset($_POST['c_name']))
                                     {
                                         $course_code   = get_post($conn, 'c_code');
-                                        // $username = $_SESSION['stuser'];
-                                        $username = "180010030";
+                                        $course_name   = get_post($conn, 'c_name');
+                                        $username = $_SESSION['stuser'];
+                                        $usernamem = $_SESSION['stuser']."m";
+                                        $usernamep = $_SESSION['stuser']."present";
+                                        $usernamea = $_SESSION['stuser']."absent";
+                                        // $username = "180010030";
                                         $k=0;
                                         $query  = "SELECT * FROM $course_code";
                                         $result = $conn->query($query);
@@ -67,7 +71,19 @@ session_start();
                                         else{
                                             $query    = "INSERT INTO $course_code VALUES ('$username')";
                                             $result   = $conn->query($query);
-                                            if (!$result) die ("Insert failed<br><br>");
+                                            if (!$result) die ("Insert cc failed<br><br>");
+
+                                            $query    = "INSERT INTO $usernamem VALUES ('$course_code','$course_name','','')";
+                                            $result   = $conn->query($query);
+                                            if (!$result) die ("Insert m failed<br><br>");
+
+                                            // $query    = "INSERT INTO $usernamep VALUES ('$course_code','')";
+                                            // $result   = $conn->query($query);
+                                            // if (!$result) die ("Insert pr failed<br><br>");
+
+                                            // $query    = "INSERT INTO $usernamea VALUES ('$course_code','')";
+                                            // $result   = $conn->query($query);
+                                            // if (!$result) die ("Insert ab failed<br><br>");
 
                                             $query  = "SELECT * FROM students";
                                             $result = $conn->query($query);
@@ -87,6 +103,27 @@ session_start();
                                                     $query  = "UPDATE students SET no_of_courses='$no_of_courses' WHERE username='$username'";  
                                                     $result = $conn->query($query); 
                                                     if (!$result) die ("Update in Students failed<br><br>");
+                                                }
+                                            }
+
+                                            $query  = "SELECT * FROM courses";
+                                            $result = $conn->query($query);
+                                            if (!$result) die ("courses access failed");
+
+                                            $rows = $result->num_rows;
+                                            for ($j = 0 ; $j < $rows ; ++$j)
+                                            {
+                                                $row = $result->fetch_array(MYSQLI_NUM);
+                                                $r0 = htmlspecialchars($row[0]);
+                                                $r1 = htmlspecialchars($row[1]);
+                                                $r2 = htmlspecialchars($row[2]);
+                                                $r3 = htmlspecialchars($row[3]);
+
+                                                if($r0 === $course_code){
+                                                    $no_of_students = $r3+1;
+                                                    $query  = "UPDATE courses SET no_of_students='$no_of_students' WHERE course_code='$course_code'";  
+                                                    $result = $conn->query($query); 
+                                                    if (!$result) die ("Update in Courses failed<br><br>");
                                                 }
                                             }
                                         }
@@ -113,6 +150,7 @@ session_start();
                                     <form action='./../student/dashboard.php' method='post'>
                                     <input type='hidden' name='register' value='yes'>
                                     <input type='hidden' name='c_code' value='$r0'>
+                                    <input type='hidden' name='c_name' value='$r1'>
                                     <input type='submit' value='Register'></form>
 _END;
 }
@@ -128,7 +166,6 @@ _END;
         <footer>
             <p>
                 <?php 
-                session_start();
                 $user = $_SESSION['stuser'];
                 echo "Welcome".$user; 
                 ?>

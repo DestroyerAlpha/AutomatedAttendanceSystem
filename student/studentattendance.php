@@ -28,13 +28,16 @@ session_start();
     <div class="sline"></div>
     <section class="outer-section">
         <section class="middle-pane">
-            <h1>Courses Attendance</h1>
+        <h1>Dates</h1>
+                <button type="button" onclick="goBack();">Go Back</button>
+        </section>
+        <aside class="right-pane">
+                <h1>Courses Attendance</h1>
                  <?php 
                     require_once './../sql_login/login.php';
                     $conn = new mysqli($hostname, $username, $password, $database);
                     if ($conn->connect_error) die("Fatal Error");
-                    $user = $_SESSION['stuser'];
-                    $user_t = $user."m";
+                    $user_t = $_SESSION['stuser']."m";
                     $query  = "SELECT * FROM $user_t";
                     $result = $conn->query($query);
                     if (!$result) die ("Roll_No. access failed");
@@ -56,7 +59,7 @@ session_start();
                         Absent Days $r3
                         Present percentage $per
                     </pre>
-                    <form action="./../student/studentattendance1.php" method="post"></form>
+                    <form action="./../student/studentattendance1.php" method="post">
                     <input type='hidden' name='view' value='yes'>
                     <input type='hidden' name='c_code' value='$r0'>
                     <input type='submit' value='View Dates'></form><br><br><br>
@@ -69,11 +72,17 @@ _END;
                       return $conn->real_escape_string($_POST[$var]);
                     }
                 ?>
-                <button type="button" onclick="goBack();">Back</button>
-        </section>
+        </aside>
     </section>
     <footer>
-        <p><?php echo "Welcome".$_SESSION["stu_user"]; ?></p>
+        <p><?php echo "Welcome".$_SESSION["stuser"]; ?></p>
     </footer>
 </body>
 </html>
+
+
+
+
+
+
+
