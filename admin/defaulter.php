@@ -6,6 +6,7 @@ if ($conn->connect_error) die("Fatal Error");
 $query = "SELECT * FROM students";
 $result = $conn->query($query);
 // $num_rows = mysqli_num_rows($result);
+<<<<<<< HEAD
 // $query2 = "DROP TABLE IF EXISTS defaulter";
 // if($conn->query($query2))
 // {
@@ -34,6 +35,8 @@ if(!mysqli_query($conn,$query3))
 // 	echo "table defaulter created successfully<br>";
 // }
 $table = "defaulter";
+=======
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 echo "<table border=1>";
 echo "<tr><th>USERID</th><th>COURSE CODE</th></tr>";
 while($row = mysqli_fetch_array($result))
@@ -43,12 +46,15 @@ while($row = mysqli_fetch_array($result))
 	$result1 = $conn->query($query1);
 	while($row1 = mysqli_fetch_array($result1))
 	{
+<<<<<<< HEAD
 		$query4 = "INSERT INTO defaulter values('".$row['username']."','".$row1['course_code']."')";
 		$res1 = mysqli_query($conn,$query4);
 		if(!$res1)
 		{
 			echo (mysqli_error($conn)."<br>");
 		}
+=======
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 		echo "<tr>";
 		echo "<td>";
 		echo $row['username'];
@@ -60,6 +66,7 @@ while($row = mysqli_fetch_array($result))
 	}
 
 }
+<<<<<<< HEAD
 // echo $table."<br>";
 echo<<<_END
 <form action="toexcel.php" method="get">
@@ -68,6 +75,8 @@ echo<<<_END
 </form>
 _END;
 
+=======
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 echo "</table>";
 echo '<a href = "admin.html">Go Back</a>';
 $conn->close();

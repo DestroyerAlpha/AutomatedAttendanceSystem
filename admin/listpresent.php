@@ -5,6 +5,7 @@ $conn = new mysqli($hostname, $username, $password, $database);
 if ($conn->connect_error) die("Fatal Error");
 $course = $_SESSION['course'];
 $date = $_SESSION['date'];
+<<<<<<< HEAD
 $date1 = $_SESSION['date1'];
 try{
     $drop_query = "DROP TABLE present";
@@ -20,6 +21,8 @@ if(!mysqli_query($conn,$query3))
 	echo (mysqli_error($conn));
 }
 $table = "present";
+=======
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 $query = "SELECT * FROM students";
 $result = $conn->query($query);
 echo "<table border=1>";
@@ -29,6 +32,7 @@ while($row = mysqli_fetch_array($result))
 	$table = $row['username']."present";
 	$query1 = "SELECT * FROM $table WHERE pdate = '$date' AND course_code='$course'";
 	$result1 = $conn->query($query1);
+<<<<<<< HEAD
 	if($row1 = mysqli_fetch_array($result1))							
 	{
 		$query4 = "INSERT INTO present values('".$row['username']."')";
@@ -37,6 +41,10 @@ while($row = mysqli_fetch_array($result))
 		{
 			echo (mysqli_error($conn)."<br>");
 		}
+=======
+	if($row1 = mysqli_fetch_array($result1))								//giving for all tables
+	{
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 		echo "<tr>";
 		echo "<td>";
 		echo $row['username'];
@@ -45,6 +53,7 @@ while($row = mysqli_fetch_array($result))
 	}
 }
 echo "</table>";
+<<<<<<< HEAD
 echo<<<_END
 <form action="toexcel.php" method="get">
 	<input type = "hidden" name = "table" value = $table>
@@ -52,6 +61,9 @@ echo<<<_END
 </form>
 _END;
 echo '<br><br><a href = "searchbydate.php?date='.$date.'&date1='.$date1.'&submit=Search">Go Back</a>';
+=======
+echo '<a href = "searchbydate.php?date='.$date.'">Go Back</a>';
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 $conn->close();
 function get_post($conn, $var)
 {

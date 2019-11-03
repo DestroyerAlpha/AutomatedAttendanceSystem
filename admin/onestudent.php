@@ -44,6 +44,7 @@ if(isset($_POST['stuinfo']))
 		echo "</table>";
 		echo "<br>";
 	}
+<<<<<<< HEAD
 echo<<<_END
 <form action="toexcel.php" method="get">
 	<input type = "hidden" name = "table" value = $table>
@@ -53,6 +54,11 @@ _END;
 
 	$table1 = $stuinfo."present";
 	$query = "SELECT * FROM $table1";
+=======
+
+	$table = $stuinfo."present";
+	$query = "SELECT * FROM $table";
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 	$result2 = $conn->query($query);
 	if (!$result2)
 	{ 
@@ -63,6 +69,7 @@ _END;
 		echo "PRESENT<br>";
 		echo "<table border=1>";
 		echo "<tr><th>course_code</th><th>Date</th></tr>";
+<<<<<<< HEAD
 		while($row1 = mysqli_fetch_array($result2))
 		{
 		    echo "<tr>";
@@ -71,12 +78,23 @@ _END;
 		    echo "</td>";
 		    echo "<td>";
 		    echo $row1['pdate'];
+=======
+		while($row = mysqli_fetch_array($result2))
+		{
+		    echo "<tr>";
+		    echo "<td>";
+		    echo $row['course_code'];
+		    echo "</td>";
+		    echo "<td>";
+		    echo $row['pdate'];
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 		    echo "</td>";
 		    echo "<td>";
 		}
 		echo "</table>";
 		echo "<br>";
 	}
+<<<<<<< HEAD
 	echo<<<_END
 <form action="toexcel.php" method="get">
 	<input type = "hidden" name = "table" value = $table1>
@@ -86,6 +104,11 @@ _END;
 
 	$table2 = $stuinfo."absent";
 	$query = "SELECT * FROM $table2";
+=======
+
+	$table = $stuinfo."absent";
+	$query = "SELECT * FROM $table";
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 	$result3 = $conn->query($query);
 	if (!$result3)
 	{ 
@@ -96,6 +119,7 @@ _END;
 		echo "ABSENT<br>";
 		echo "<table border=1>";
 		echo "<tr><th>course_code</th><th>Date</th></tr>";
+<<<<<<< HEAD
 		while($row2 = mysqli_fetch_array($result3))
 		{
 		    echo "<tr>";
@@ -104,12 +128,23 @@ _END;
 		    echo "</td>";
 		    echo "<td>";
 		    echo $row2['adate'];
+=======
+		while($row = mysqli_fetch_array($result3))
+		{
+		    echo "<tr>";
+		    echo "<td>";
+		    echo $row['course_code'];
+		    echo "</td>";
+		    echo "<td>";
+		    echo $row['adate'];
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 		    echo "</td>";
 		    echo "<td>";
 		}
 		echo "</table>";
 		echo "<br>";
 	}
+<<<<<<< HEAD
 	echo<<<_END
 <form action="toexcel.php" method="get">
 	<input type = "hidden" name = "table" value = $table2>
@@ -118,6 +153,9 @@ _END;
 _END;
 }
 
+=======
+}
+>>>>>>> c90baca83b3aa86c89b68df142aa8d54805428fe
 echo '<a href = "admin.html">Go Back</a>';
 $conn->close();
 function get_post($conn, $var)
