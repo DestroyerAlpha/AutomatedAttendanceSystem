@@ -24,7 +24,7 @@ if(!$query1)
 }
 else
 {
-    $tableec = "CREATE TABLE $course_code (student_id varchar(256) NOT NULL PRIMARY KEY)";
+    $tableec = "CREATE TABLE $course_code (student_id varchar(20) NOT NULL PRIMARY KEY)";
 
     if(!mysqli_query($conn,$tableec))
     {
@@ -53,6 +53,7 @@ function prepared_query($mysqli, $sql, $params, $types = "")
 {
     $types = $types ?: str_repeat("s", count($params));
     $stmt = $mysqli->prepare($sql);
+    echo mysqli_error($conn)."<br>";
     $stmt->bind_param($types, ...$params);
     $stmt->execute();
     return $stmt;

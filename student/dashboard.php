@@ -15,6 +15,7 @@ session_start();
 		   alert("You have already register.");
 		}
 	    </script>
+
     </head>
 
     <body>
@@ -105,7 +106,7 @@ session_start();
                                                     if (!$result) die ("Update in Students failed<br><br>");
                                                 }
                                             }
-
+                                          
                                             $query  = "SELECT * FROM courses";
                                             $result = $conn->query($query);
                                             if (!$result) die ("courses access failed");
@@ -150,7 +151,7 @@ session_start();
                                     <form action='./../student/dashboard.php' method='post'>
                                     <input type='hidden' name='register' value='yes'>
                                     <input type='hidden' name='c_code' value='$r0'>
-                                    <input type='hidden' name='c_name' value='$r1'>
+                                    <input type='hidden' name='c_name' value='$r1'
                                     <input type='submit' value='Register'></form>
 _END;
 }
