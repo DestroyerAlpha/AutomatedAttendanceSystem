@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once "./../sql_login/login.php";
 $conn = mysqli_connect($hostname,$username,$password,$database);
@@ -10,7 +9,6 @@ if (!$conn) {
 if (!empty($_POST['name']) && !empty($_POST['pass'])) {
     $unsafename = $_POST['name'];
     $unsafepass = $_POST['pass'];
-    $_SESSION['stuser']= $unsafename;
 
     // reference for sql injection : https://www.w3schools.com/php/php_mysql_prepared_statements.asp
     $query = $conn->prepare("SELECT * FROM student_info WHERE username = ? AND password = ?");
@@ -25,7 +23,7 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
             header('Location: ./../home/home.html');
         }
         else {
-            header('Location: ./../student/dashboard.php');
+            header('Location: ./../student/dashboard.html');
         }
     }
 }
