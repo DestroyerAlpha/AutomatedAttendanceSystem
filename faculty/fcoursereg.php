@@ -13,9 +13,11 @@ if (!$conn)
 $username = $_SESSION['username'];
 $course_code = $_POST['ccode'];
 $course_name = $_POST['cname'];
+$course_batch = $_POST['cbatch'];
+$course_branch = $_POST['cbranch'];
 
-$query1 = 'INSERT INTO courses(course_code,course_name,faculty_id) VALUES(?,?,?)';
-$query1 = prepared_query($conn, $query1, [$course_code,$course_name,$username]);
+$query1 = 'INSERT INTO courses(course_code,course_name,faculty_id,batch,branch) VALUES(?,?,?,?,?)';
+$query1 = prepared_query($conn, $query1, [$course_code,$course_name,$username,$course_batch,$course_branch]);
 
 if(!$query1)
 {
