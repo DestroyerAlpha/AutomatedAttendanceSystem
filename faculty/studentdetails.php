@@ -44,6 +44,19 @@ else
     else
     {
         echo "Course Deleted";
+        $query = "DROP TABLE $course_code";
+        $result = mysqli_query($conn,$query);
+        if(!$result)
+        {
+            echo "Course table couldn't be dropped. <br>";
+        }
+        $table_name = $course_code."_attendance";
+        $query = "DROP TABLE $table_name";
+        $result = mysqli_query($conn,$query);
+        if(!$result)
+        {
+            echo "Course attendance couldn't be dropped. <br>";
+        }
     }
 }
 ?>
