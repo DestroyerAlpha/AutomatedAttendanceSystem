@@ -1,5 +1,12 @@
 <?php
 session_start();
+if($_SESSION['login'] !== 'TRUE')
+{
+    echo "      <script>
+                alert('Not Allowed to View this!');
+                window.location.href='./../home/home.html';
+                </script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +36,7 @@ session_start();
     <section class="outer-section">
         <section class="middle-pane">
         <h1>To Register</h1>
-                <button type="button" onclick="goBack();">Go Back</button>
+                <button class="submit-button" type="button" onclick="goBack();">Go Back</button>
         </section>
         <aside class="right-pane">
                 <h1>Courses Attendance</h1>
@@ -37,6 +44,7 @@ session_start();
                     require_once './../sql_login/login.php';
                     $conn = new mysqli($hostname, $username, $password, $database);
                     if ($conn->connect_error) die("Fatal Error");
+                    echo $_SESSION['stuser'];
                     $user_t = $_SESSION['stuser']."m";
                     $query  = "SELECT * FROM $user_t";
                     $result = $conn->query($query);
@@ -75,7 +83,7 @@ _END;
         </aside>
     </section>
     <footer>
-        <p><?php echo "Welcome".$_SESSION["stname"]; ?></p>
+        <p><?php echo "Welcome ".$_SESSION["stname"]; ?></p>
     </footer>
 </body>
 </html>

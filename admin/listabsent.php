@@ -1,3 +1,6 @@
+<style>
+<?php include './../home/css/stylesheet.css';?>
+</style>
 <?php
 session_start();
 require_once './../sql_login/login.php';
@@ -54,7 +57,6 @@ echo<<<_END
 </form>
 _END;
 echo '<a href = "searchbydate.php?date='.$date.'&date1='.$date1.'">Go Back</a>';
-echo '<a href = "searchbydate.php?date='.$date.'">Go Back</a>';
 $conn->close();
 function get_post($conn, $var)
 {

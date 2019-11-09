@@ -31,9 +31,8 @@ if($_SESSION['login'] !== 'TRUE')
                 <h1>Student Dashboard</h1>
             </div>
         </header>
-        <nav>
-        <a href="./../home/home.html"><input type="submit" onclick="<?php session_destroy(); $_SESSION['login']='FALSE';?>" value="Logout"></a>
-        </nav>
+            <br>
+            <a href="./../student/logout.php"><button class="submit-button" style="float: right;">Log Out</button></a>
         <div class="sline"></div>
         <section class="outer-section">
             <aside class="left-pane">
@@ -45,6 +44,7 @@ if($_SESSION['login'] !== 'TRUE')
                     </form>
             </aside>
             <aside class="right-pane">
+                <br>
                 <h1>Course Register</h1>
                                 <?php 
                                     require_once './../sql_login/login.php';
@@ -112,7 +112,7 @@ if($_SESSION['login'] !== 'TRUE')
 
                                                 if($r0 === $username){
                                                     $no_of_courses = $r3+1;
-                                                    $query  = "UPDATE students SET no_of_courses='$no_of_courses' WHERE username='$username'";  
+                                                    $query  = "UPDATE students SET no_of_courses=$no_of_courses WHERE username='$username'";  
                                                     $result = $conn->query($query); 
                                                     if (!$result) die ("Update in Students failed<br><br>");
                                                 }
@@ -133,7 +133,7 @@ if($_SESSION['login'] !== 'TRUE')
 
                                                 if($r0 === $course_code){
                                                     $no_of_students = $r3+1;
-                                                    $query  = "UPDATE courses SET no_of_students='$no_of_students' WHERE course_code='$course_code'";  
+                                                    $query  = "UPDATE courses SET no_of_students=$no_of_students WHERE course_code='$course_code'";  
                                                     $result = $conn->query($query); 
                                                     if (!$result) die ("Update in Courses failed<br><br>");
                                                 }
@@ -142,6 +142,7 @@ if($_SESSION['login'] !== 'TRUE')
                                     }
 
 
+                                    $i = 0;
                                     $query  = "SELECT * FROM courses";
                                     $result = $conn->query($query);
                                     if (!$result) die ("courses access failed");
@@ -158,6 +159,7 @@ if($_SESSION['login'] !== 'TRUE')
                                     // echo $r3." ".$r4;
                                     // echo $_SESSION['stbranch']." ".$_SESSION['stbatch'];
                                     if($_SESSION['stbranch']==$r3 && $_SESSION['stbatch']==$r4){
+                                        $i=1;
                                         echo <<<_END
                                         <pre>
                                         Course_code $r0
@@ -172,6 +174,9 @@ if($_SESSION['login'] !== 'TRUE')
 _END;
 }
 }
+                                    if($i==0){
+                                        echo "No More Courses to Register!";
+                                    }
                                     $result->close() ;
                                     $conn->close() ;
                                     function get_post($conn, $var)

@@ -1,5 +1,15 @@
+<style>
+<?php include './../home/css/stylesheet.css';?>
+</style>
 <?php
 session_start();
+if($_SESSION['login'] !== 'TRUE')
+{
+    echo "      <script>
+                alert('Not Allowed to View this!');
+                window.location.href='./../home/home.html';
+                </script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,11 +120,11 @@ session_start();
         </section>
         <aside class="right-pane">
             <h1> Back </h1>
-            <button type="button" onclick="goBack();">Go Back</button>
+            <button class="submit-button" type="button" onclick="goBack();">Go Back</button>
         </aside>
     </section>
     <footer>
-        <p><?php echo "Welcome".$_SESSION['stname']; ?></p>
+        <p><?php echo "Welcome ".$_SESSION['stname']; ?></p>
     </footer>
 </body>
 </html>

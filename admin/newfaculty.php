@@ -1,3 +1,6 @@
+<style>
+<?php include './../home/css/stylesheet.css';?>
+</style>
 <?php
 require_once './../sql_login/login.php';
 $conn = new mysqli($hostname, $username, $password, $database);

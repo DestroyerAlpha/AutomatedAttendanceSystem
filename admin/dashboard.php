@@ -1,6 +1,7 @@
 <?php
 session_start();
-if($_SESSION['login'] !== 'TRUE')
+// echo $_SESSION['login'];
+if($_SESSION['login'] !== TRUE)
 {
     echo "      <script>
                 alert('Not Allowed to View this!');
@@ -38,8 +39,6 @@ if($_SESSION['login'] !== 'TRUE')
                         <li><input type="submit" name="submit" value="Search" class="submit-button"></li><br>
                     </form>
                 </div>
-
-                <li><button onclick="#" class="submit-button">Check Attendance Data</button></li><br><br>
                 
                 <li><button onclick="window.location.href='defaulter.php'" class="submit-button">Defaulter List</button></li><br><br>
                 
@@ -51,14 +50,13 @@ if($_SESSION['login'] !== 'TRUE')
                     </form>
                 </div>
 
-                <li><button onclick="#" class="submit-button">Generate Excel Reports</button></li>
             </ul>
         </aside>
         <ul>    
     		<li><button onclick="window.location.href='newstudent.html'" class="submit-button">Add a new student</button>
     		<br><br><br><br><br></li>
     		<li><button onclick="window.location.href='newfaculty.html'" class="submit-button">Add a new faculty</button><br><br><br><br></li>
-            <li><a href="./../home/home.html"><button onclick="<?php session_destroy(); $_SESSION['login']='FALSE';?>">Log Out</button></a></li>
+            <li><a href="./../admin/logout.php"><button class="submit-button">Log Out</button></a></li>
     	</ul>
     </section>
     <footer>

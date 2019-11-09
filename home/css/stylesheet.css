@@ -8,6 +8,8 @@ body {
     margin: 0px;
     display: flex;
     flex-direction: column;
+    min-height: 400px;
+    margin-bottom: 100px;
 }
 
 .outer-section {
@@ -51,6 +53,17 @@ footer {
     padding-bottom: 1%;
 }
 
+input[type=submit] {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
 header {
     height: 8%;
     text-align: center;
@@ -64,4 +77,63 @@ ul {
 nav {
     height: 3%;
     text-align: center;
+}
+
+.onestudent {
+    padding: 10px;
+    margin: 10px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+
+input {
+    margin: 15px 0;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid rgba(10, 180, 180, 1);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: rgba(20, 20, 20, .2);
+    color: white;
+    outline: none;
+}
+
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }

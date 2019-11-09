@@ -1,3 +1,6 @@
+<style>
+<?php include './../home/css/stylesheet.css';?>
+</style>
 <?php
 session_start();
 require_once './../sql_login/login.php';
@@ -51,7 +54,7 @@ if(isset($_SESSION['date']) && isset($_SESSION['date1']))
 		$result2 = $conn->query($query1);
 		echo "NET ATTENDANCE ON $date<br>";
 		echo "<table border=1>";
-		echo "<tr><th>Date</th><th>present</th><th>absent</th><th>present list</th><th>absent_list</th></tr>";
+		echo "<tr><th>Date</th><th>present</th><th>absent</th></tr>";
 		echo (mysqli_error($conn)."<br>");
 		while($row = mysqli_fetch_array($result2))
 		{
@@ -66,16 +69,10 @@ if(isset($_SESSION['date']) && isset($_SESSION['date1']))
 		    echo $row['attendance_date'];
 		    echo "</td>";
 		    echo "<td>";
-		    echo $row['present'];
+		    echo "<a href = 'listpresent.php'>".$row['present']."</a>";
 		    echo "</td>";
 		    echo "<td>";
-		    echo $row['absentees'];
-		    echo "</td>";
-		    echo "<td>";
-		    echo "<a href = 'listpresent.php'>list</a>";
-		    echo "</td>";
-		    echo "<td>";
-		    echo "<a href = 'listabsent.php'>list</a>";
+		    echo "<a href = 'listabsent.php'>".$row['absentees']."</a>";
 		    echo "</td>";
 		    echo "</tr>";
 		}

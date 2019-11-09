@@ -1,3 +1,6 @@
+<style>
+<?php include './../home/css/stylesheet.css';?>
+</style>
 <?php
 session_start();
 require_once './../sql_login/login.php';

@@ -2,7 +2,7 @@
 session_start();
 require_once "./../sql_login/login.php";
 $conn = mysqli_connect($hostname,$username,$password,$database);
-$_SESSION['login'] = "TRUE";
+$_SESSION['login'] = TRUE;
 if (!$conn)
 {
     die('<p>Connection failed: <p>' . mysqli_connect_error());

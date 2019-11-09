@@ -1,3 +1,6 @@
+<style>
+<?php include './../home/css/stylesheet.css';?>
+</style>
 <?php
 session_start();
 $_SESSION['login'] = 'TRUE';

@@ -1,3 +1,6 @@
+<style>
+<?php include './../home/css/stylesheet.css';?>
+</style>
 <?php
 require_once './../sql_login/login.php';
 $conn = new mysqli($hostname, $username, $password, $database);
@@ -53,8 +56,6 @@ _END;
 
 	$table1 = $stuinfo."present";
 	$query = "SELECT * FROM $table1";
-	$table = $stuinfo."present";
-	$query = "SELECT * FROM $table";
 	$result2 = $conn->query($query);
 	if (!$result2)
 	{ 
@@ -98,8 +99,6 @@ _END;
 
 	$table2 = $stuinfo."absent";
 	$query = "SELECT * FROM $table2";
-	$table = $stuinfo."absent";
-	$query = "SELECT * FROM $table";
 	$result3 = $conn->query($query);
 	if (!$result3)
 	{ 

@@ -39,9 +39,8 @@ if (!$conn)
         </header>
         <div class="sline"></div>
     <div class="sline"></div>
-    <nav>
-            <a href="./../home/home.html"><input type="submit" onclick="<?php session_destroy(); $_SESSION['login']='FALSE';?>" value="Logout"></a>
-        </nav>
+        <br>
+            <a href="./../faculty/logout.php"><button class="submit-button" style="float: right;">Log Out</button></a>
     <section class="outer-section">
         <aside class="left-pane">
             <h1>Courses Floated</h1>
@@ -67,6 +66,7 @@ if (!$conn)
                 </form>
         </aside>
         <section class="middle-pane">
+            <br><br><br>
             <h1>Add Attendance</h1>
             <h3>Select Course:-</h3>
             <form action="./../faculty/attendance.php" method="post">
