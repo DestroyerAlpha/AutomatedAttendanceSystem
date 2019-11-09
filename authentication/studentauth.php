@@ -47,6 +47,7 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
         }
     }
 }
+}
 else {
     header('Location: ./../home/home.html');
 }
