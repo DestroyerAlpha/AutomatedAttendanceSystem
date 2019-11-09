@@ -86,6 +86,7 @@ if (!$conn)
                         <li>Course Code:- <input class="text-fields" type="text" name="ccode" placeholder="Course Code" required/></li>
                         <li>Course Batch:- <input class="text-fields" type="text" name="cbatch" placeholder="Course Batch" required/></li>
                         <li>Course Branch:- <input class="text-fields" type="text" name="cbranch" placeholder="Course Branch" required/></li>
+
                         <li><input type="submit" class="submit-button" name="in" value="Register" /></li>
                     </ul>
                 </form>
