@@ -34,7 +34,7 @@ if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['DOB']) && 
 	}
 	else 
 	{
-		echo "table absent created successfully<br><br>";
+		echo "table present created successfully<br><br>";
 	}
 
 	$absent = $userid."absent";

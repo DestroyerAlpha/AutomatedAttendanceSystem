@@ -27,49 +27,23 @@
         $tables = "CREATE TABLE student_info (username varchar(10) NOT NULL PRIMARY KEY, password varchar (15) NOT NULL)";
 
         if(mysqli_query($conn,$tables))
-<<<<<<< HEAD
             echo "Successfuly created student_info table. </br>";
         else 
             die("Error while making student_info table.".mysqli_error($conn));
-=======
-            echo "Successfuly created authentication table. </br>";
-        else 
-            die("Error while making authentication table.".mysqli_error($conn));
->>>>>>> bf1330951adb182f5beb29bba2755db4860354b9
         
         $tablea = "CREATE TABLE admin_info (username varchar(10) NOT NULL PRIMARY KEY, password varchar (15) NOT NULL)";
 
         if(mysqli_query($conn,$tablea))
-<<<<<<< HEAD
             echo "Successfuly created admin_info table. </br>";
         else 
             die("Error while making admin_info table.".mysqli_error($conn));
-=======
-            echo "Successfuly created authentication table. </br>";
-        else 
-            die("Error while making authentication table.".mysqli_error($conn));
->>>>>>> bf1330951adb182f5beb29bba2755db4860354b9
         
         $tablef = "CREATE TABLE faculty_info (username varchar(10) NOT NULL PRIMARY KEY, password varchar (15) NOT NULL)";
 
         if(mysqli_query($conn,$tablef))
-<<<<<<< HEAD
             echo "Successfuly created faculty info table. </br>";
         else 
             die("Error while making faculty info table.".mysqli_error($conn));
-=======
-            echo "Successfuly created authentication table. </br>";
-        else 
-            die("Error while making authentication table.".mysqli_error($conn));
->>>>>>> bf1330951adb182f5beb29bba2755db4860354b9
-
-        $tableas = "CREATE TABLE students (username varchar(10) NOT NULL PRIMARY KEY, name varchar (20) NOT NULL, dob date NOT NULL, no_of_courses int(6) DEFAULT 0)";
-
-        if(mysqli_query($conn,$tableas))
-<<<<<<< HEAD
-            echo "Successfuly created students table. </br>";
-        else 
-            die("Error while making students table.".mysqli_error($conn));
 
         $tableac = "CREATE TABLE courses (course_code varchar(10) NOT NULL PRIMARY KEY, course_name varchar(30) NOT NULL, faculty_id varchar (20) NOT NULL, no_of_students int(6) DEFAULT 0, batch year(4) NOT NULL, branch varchar(10) NOT NULL)";
 
@@ -90,18 +64,6 @@
             echo "Successfuly added admin data. </br>";
         else 
             die("Error while adding admin data.".mysqli_error($conn));
-=======
-            echo "Successfuly created authentication table. </br>";
-        else 
-            die("Error while making authentication table.".mysqli_error($conn));
-
-        $tableac = "CREATE TABLE courses (course_code varchar(10) NOT NULL PRIMARY KEY, course_name varchar(30) NOT NULL, faculty_id varchar (20) NOT NULL, no_of_students int(6) DEFAULT 0)";
-
-        if(mysqli_query($conn,$tableac))
-            echo "Successfuly created authentication table. </br>";
-        else 
-            die("Error while making authentication table.".mysqli_error($conn));
->>>>>>> bf1330951adb182f5beb29bba2755db4860354b9
 
     }
 
