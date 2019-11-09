@@ -64,6 +64,7 @@
             echo "Successfuly added admin data. </br>";
         else 
             die("Error while adding admin data.".mysqli_error($conn));
+        
 
     }
 

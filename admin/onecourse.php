@@ -61,7 +61,6 @@ echo<<<_END
 <form action="searchbydate.php" method="get">
 	search by date
 	<input type="date" name="date"> to <input type="date" name="date1"><br><br>
-	<input type="date" name="date"><br><br> 
 	<input type="submit" name="submit" value="Search">
 </form>
 _END;

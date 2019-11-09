@@ -36,6 +36,18 @@ if (!$conn)
                 {
                     echo "Couldn't mark $student present<br>".mysqli_error($conn);
                 }
+                $table2 = $student."m";
+                $query2 = "SELECT * FROM $table2 WHERE course_code = '$couse_code'";
+                $result = mysqli_query($conn,$query2);
+                $row = mysqli_fetch_array($result);
+                $present = $row['present'];
+                $present = $present + 1;
+                $newq = "UPDATE $table2 SET present=$present WHERE course_code = '$course_code'";
+                $result = mysqli_query($conn,$newq);
+                if(!$result)
+                {
+                    echo "Couldn't mark $student present in his table".mysqli_error($conn);
+                }
             }
             $query2 = "SELECT * FROM $course_code";
             $result1 = mysqli_query($conn, $query2);
@@ -54,6 +66,18 @@ if (!$conn)
                     if(!result)
                     {
                         echo "Couldn't mark $student_id absent<br>".mysqli_error($conn);
+                    }
+                    $table2 = $student_id."m";
+                    $query2 = "SELECT * FROM $table2 WHERE course_code = '$couse_code'";
+                    $result = mysqli_query($conn,$query2);
+                    $row = mysqli_fetch_array($result);
+                    $absent = $row['present'];
+                    $absent = $absent + 1;
+                    $newq = "UPDATE $table2 SET absent=$absent WHERE course_code = '$course_code'";
+                    $result = mysqli_query($conn,$newq);
+                    if(!$result)
+                    {
+                        echo "Couldn't mark $student_id present in his table".mysqli_error($conn);
                     }
                 }
             }
@@ -75,6 +99,18 @@ if (!$conn)
                 if(!result)
                 {
                     echo "Couldn't mark $student_id absent<br>".mysqli_error($conn);
+                }
+                $table2 = $student_id."m";
+                $query2 = "SELECT * FROM $table2 WHERE course_code = '$couse_code'";
+                $result = mysqli_query($conn,$query2);
+                $row = mysqli_fetch_array($result);
+                $absent = $row['present'];
+                $absent = $absent + 1;
+                $newq = "UPDATE $table2 SET absent=$absent WHERE course_code = '$course_code'";
+                $result = mysqli_query($conn,$newq);
+                if(!$result)
+                {
+                    echo "Couldn't mark $student_id present in his table".mysqli_error($conn);
                 }
             }
         }

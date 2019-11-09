@@ -26,8 +26,8 @@ echo "<table border=1>";
 echo "<tr><th>USERID</th></tr>";
 while($row = mysqli_fetch_array($result))
 {
-	$table = $row['username']."present";
-	$query1 = "SELECT * FROM $table WHERE pdate = '$date' AND course_code='$course'";
+	$table1 = $row['username']."present";
+	$query1 = "SELECT * FROM $table1 WHERE pdate = '$date' AND course_code='$course'";
 	$result1 = $conn->query($query1);
 	if($row1 = mysqli_fetch_array($result1))							
 	{
@@ -37,14 +37,12 @@ while($row = mysqli_fetch_array($result))
 		{
 			echo (mysqli_error($conn)."<br>");
 		}
-	if($row1 = mysqli_fetch_array($result1))								//giving for all tables
-	{
 		echo "<tr>";
 		echo "<td>";
 		echo $row['username'];
 		echo "</td>";
 		echo "</tr>";
-	}
+}
 }
 echo "</table>";
 echo<<<_END
@@ -54,7 +52,6 @@ echo<<<_END
 </form>
 _END;
 echo '<br><br><a href = "searchbydate.php?date='.$date.'&date1='.$date1.'&submit=Search">Go Back</a>';
-echo '<a href = "searchbydate.php?date='.$date.'">Go Back</a>';
 $conn->close();
 function get_post($conn, $var)
 {

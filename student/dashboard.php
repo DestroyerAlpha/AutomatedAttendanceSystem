@@ -76,7 +76,7 @@ session_start();
 
                                             $stbranch = $_SESSION['stbranch'];
                                             $stbatch = $_SESSION['stbatch'];
-                                            $query    = "INSERT INTO $usernamem VALUES ('$course_code','$course_name','','','$stbranch','$stbatch')";
+                                            $query    = "INSERT INTO $usernamem VALUES ('$course_code','$course_name',0,0)";
                                             $result   = $conn->query($query);
                                             if (!$result) die ("Insert m failed<br><br>");
 
@@ -144,8 +144,10 @@ session_start();
                                     $r0 = htmlspecialchars($row[0]);
                                     $r1 = htmlspecialchars($row[1]);
                                     $r2 = htmlspecialchars($row[2]);
-                                    $r3 = htmlspecialchars($row[3]);
+                                    $r3 = htmlspecialchars($row[5]);
                                     $r4 = htmlspecialchars($row[4]);
+                                    // echo $r3." ".$r4;
+                                    // echo $_SESSION['stbranch']." ".$_SESSION['stbatch'];
                                     if($_SESSION['stbranch']==$r3 && $_SESSION['stbatch']==$r4){
                                         echo <<<_END
                                         <pre>

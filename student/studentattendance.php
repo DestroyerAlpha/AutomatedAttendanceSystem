@@ -50,14 +50,14 @@ session_start();
                         $r1 = htmlspecialchars($row[1]);
                         $r2 = htmlspecialchars($row[2]);
                         $r3 = htmlspecialchars($row[3]);
-                        $per = ($r2)/($r2+$r3);
+                        $per = ($r2)/($r2+$r3)*100;
                         echo <<<_END
                     <pre>
                         Course_code $r0
                         Course_name $r1
                         Present Days $r2
                         Absent Days $r3
-                        Present percentage $per
+                        Present percentage $per%
                     </pre>
                     <form action="./../student/studentattendance1.php" method="post">
                     <input type='hidden' name='view' value='yes'>
