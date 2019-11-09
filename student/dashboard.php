@@ -74,7 +74,9 @@ session_start();
                                             $result   = $conn->query($query);
                                             if (!$result) die ("Insert cc failed<br><br>");
 
-                                            $query    = "INSERT INTO $usernamem VALUES ('$course_code','$course_name','','')";
+                                            $stbranch = $_SESSION['stbranch'];
+                                            $stbatch = $_SESSION['stbatch'];
+                                            $query    = "INSERT INTO $usernamem VALUES ('$course_code','$course_name','','','$stbranch','$stbatch')";
                                             $result   = $conn->query($query);
                                             if (!$result) die ("Insert m failed<br><br>");
 
@@ -142,18 +144,22 @@ session_start();
                                     $r0 = htmlspecialchars($row[0]);
                                     $r1 = htmlspecialchars($row[1]);
                                     $r2 = htmlspecialchars($row[2]);
-                                    echo <<<_END
-                                    <pre>
-                                    Course_code $r0
-                                    Course_name $r1
-                                    Faculty_id $r2
-                                    </pre>
-                                    <form action='./../student/dashboard.php' method='post'>
-                                    <input type='hidden' name='register' value='yes'>
-                                    <input type='hidden' name='c_code' value='$r0'>
-                                    <input type='hidden' name='c_name' value='$r1'
-                                    <input type='submit' value='Register'></form>
+                                    $r3 = htmlspecialchars($row[3]);
+                                    $r4 = htmlspecialchars($row[4]);
+                                    if($_SESSION['stbranch']==$r3 && $_SESSION['stbatch']==$r4){
+                                        echo <<<_END
+                                        <pre>
+                                        Course_code $r0
+                                        Course_name $r1
+                                        Faculty_id $r2
+                                        </pre>
+                                        <form action='./../student/dashboard.php' method='post'>
+                                        <input type='hidden' name='register' value='yes'>
+                                        <input type='hidden' name='c_code' value='$r0'>
+                                        <input type='hidden' name='c_name' value='$r1'>
+                                        <input type='submit' value='Register'></form>
 _END;
+}
 }
                                     $result->close() ;
                                     $conn->close() ;
@@ -167,7 +173,7 @@ _END;
         <footer>
             <p>
                 <?php 
-                $user = $_SESSION['stuser'];
+                $user = $_SESSION['stname'];
                 echo "Welcome".$user; 
                 ?>
             </p>

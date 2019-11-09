@@ -41,12 +41,6 @@ session_start();
                     if (isset($_POST['view']) && isset($_POST['c_code']))
                     {
                         $c_code = $_POST['c_code'];
-                        echo <<<_END
-                        <pre>
-                        Present Dates :
-
-                        </pre>
-_END;
 
                         $p = 0;
                         $k = 0;
@@ -55,6 +49,9 @@ _END;
                         $result = $conn->query($query);
                         if (!$result) die ("Roll_present access failed");
                                     
+                        
+                        echo "<table border=1>";
+                        echo "<tr><th>Present Date/s</th></tr>";
                         $rows = $result->num_rows;
                         for ($j = 0 ; $j < $rows ; ++$j)
                         {
@@ -64,28 +61,23 @@ _END;
 
                             if($r0 == $c_code){
                                 $p=1;
-                                echo <<<_END
-                                <pre>
-                                $r1</pre>
-_END;
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $r1;
+                                echo "</td>";
+                                echo "</tr>";
                             }
                         }
 
-
-                        echo <<<_END
-                        <pre>
-
-
-                        Absent Dates :
-
-                        </pre>
-_END;
+                        echo "</table> <br><br><br>";
 
                         $user_a = $_SESSION['stuser']."absent";
                         $query  = "SELECT * FROM $user_a";
                         $result = $conn->query($query);
                         if (!$result) die ("Roll_present access failed");
                                     
+                        echo "<table border=1>";
+                        echo "<tr><th>Absent Date/s</th></tr>";
                         $rows = $result->num_rows;
                         for ($j = 0 ; $j < $rows ; ++$j)
                         {
@@ -95,12 +87,14 @@ _END;
 
                             if($r0 == $c_code){
                                 $k=1;
-                                echo <<<_END
-                                <pre>
-                                $r1</pre>
-_END;
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $r1;
+                                echo "</td>";
+                                echo "</tr>";
                             }
                         }
+                        echo "</table>";
 
                         if($p==0 && $k==0){
                             echo "<script>goBack1();</script>";
@@ -120,7 +114,7 @@ _END;
         </aside>
     </section>
     <footer>
-        <p><?php echo "Welcome".$_SESSION['stuser']; ?></p>
+        <p><?php echo "Welcome".$_SESSION['stname']; ?></p>
     </footer>
 </body>
 </html>

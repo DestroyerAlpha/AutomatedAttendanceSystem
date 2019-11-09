@@ -28,7 +28,7 @@ session_start();
     <div class="sline"></div>
     <section class="outer-section">
         <section class="middle-pane">
-        <h1>Dates</h1>
+        <h1>To Register</h1>
                 <button type="button" onclick="goBack();">Go Back</button>
         </section>
         <aside class="right-pane">
@@ -75,7 +75,7 @@ _END;
         </aside>
     </section>
     <footer>
-        <p><?php echo "Welcome".$_SESSION["stuser"]; ?></p>
+        <p><?php echo "Welcome".$_SESSION["stname"]; ?></p>
     </footer>
 </body>
 </html>
