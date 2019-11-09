@@ -16,13 +16,17 @@ $course_name = $_POST['cname'];
 $course_batch = $_POST['cbatch'];
 $course_branch = $_POST['cbranch'];
 
-$query1 = 'INSERT INTO courses(course_code,course_name,faculty_id,batch,branch) VALUES(?,?,?,?,?)';
-$query1 = prepared_query($conn, $query1, [$course_code,$course_name,$username,$course_batch,$course_branch]);
+// $query1 = 'INSERT INTO courses(course_code,course_name,faculty_id,batch,branch) VALUES(?,?,?,?,?)';
+// $query1 = prepared_query($conn, $query1, [$course_code,$course_name,$username,$course_batch,$course_branch]);
 
-if(!$query1)
+$query1 = "INSERT INTO courses VALUES('$course_code','$course_name','$username',0,$course_batch,'$course_branch')";
+$result = mysqli_query($conn,$query1);
+
+
+if(!$result)
 {
     // header('Location: ./../faculty/dashboard.php');
-    echo "Failed to insert";
+    echo "Failed to insert".mysqli_error($conn);
 }
 else
 {

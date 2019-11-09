@@ -3,6 +3,18 @@ session_start();
 require_once "./../sql_login/login.php";
 $conn = mysqli_connect($hostname,$username,$password,$database);
 $faculty_id = $_SESSION['username'];
+$query = "SELECT * FROM faculty_info WHERE username = '$faculty_id'";
+$result = mysqli_query($conn,$query);
+$row = mysqli_fetch_row($result);
+$faculty_name = $row['name'];
+$_SESSION['name'] = $faculty_name;
+if($_SESSION['login'] !== 'TRUE')
+{
+    echo "<script>
+                alert('Not Allowed to View this!');
+                window.location.href='./../home/home.html';
+                </script>";
+}
 if (!$conn)
 {
     die('<p>Connection failed: <p>' . mysqli_connect_error());
@@ -25,11 +37,11 @@ if (!$conn)
                 <h1>Faculty Dashboard</h1>
             </div>
         </header>
-        <nav>
-            <a href="./../home/home.html"><input type="submit" value="Logout"></a>
-        </nav>
         <div class="sline"></div>
     <div class="sline"></div>
+    <nav>
+            <a href="./../home/home.html"><input type="submit" onclick="<?php session_destroy(); $_SESSION['login']='FALSE';?>" value="Logout"></a>
+        </nav>
     <section class="outer-section">
         <aside class="left-pane">
             <h1>Courses Floated</h1>
@@ -91,7 +103,7 @@ if (!$conn)
         </aside>
     </section>
     <footer>
-        <p>Faculty: <?php echo $_SESSION['username']; ?></p>
+        <p>Faculty: <?php echo $faculty_name; ?></p>
     </footer>
 </body>
 </html>

@@ -10,7 +10,7 @@ if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['DOB']) && 
     $dob     = get_post($conn, 'DOB');
     $password = get_post($conn, 'Password');
     $userid     = get_post($conn, 'userid');
- 	$query    = "INSERT INTO faculty_info VALUES" . "('$userid','$password')";
+ 	$query    = "INSERT INTO faculty_info VALUES" . "('$userid','$password','$fname.$lname')";
 	$result = $conn->query($query);
 	if (!$result)
 	{

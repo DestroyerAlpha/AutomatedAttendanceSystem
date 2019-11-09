@@ -38,7 +38,7 @@
         else 
             die("Error while making admin_info table.".mysqli_error($conn));
         
-        $tablef = "CREATE TABLE faculty_info (username varchar(10) NOT NULL PRIMARY KEY, password varchar (15) NOT NULL)";
+        $tablef = "CREATE TABLE faculty_info (username varchar(10) NOT NULL PRIMARY KEY, password varchar (15) NOT NULL, name varchar(256) NOT NULL)";
 
         if(mysqli_query($conn,$tablef))
             echo "Successfuly created faculty info table. </br>";

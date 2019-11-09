@@ -1,5 +1,12 @@
 <?php
 session_start();
+if($_SESSION['login'] !== 'TRUE')
+{
+    echo "      <script>
+                alert('Not Allowed to View this!');
+                window.location.href='./../home/home.html';
+                </script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +31,9 @@ session_start();
                 <h1>Student Dashboard</h1>
             </div>
         </header>
-
+        <nav>
+        <a href="./../home/home.html"><input type="submit" onclick="<?php session_destroy(); $_SESSION['login']='FALSE';?>" value="Logout"></a>
+        </nav>
         <div class="sline"></div>
         <section class="outer-section">
             <aside class="left-pane">
@@ -176,7 +185,7 @@ _END;
             <p>
                 <?php 
                 $user = $_SESSION['stname'];
-                echo "Welcome".$user; 
+                echo "Welcome ".$user; 
                 ?>
             </p>
         </footer>

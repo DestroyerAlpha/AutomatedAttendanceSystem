@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$_SESSION['login'] = 'TRUE';
 require_once "./../sql_login/login.php";
 $conn = mysqli_connect($hostname,$username,$password,$database);
 
@@ -22,7 +22,10 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
         $result = $query->get_result();
         $num_rows = $result->num_rows;
         if (!$num_rows) {
-            header('Location: ./../home/home.html');
+            echo "<script>
+                alert('Incorrect login details!');
+                window.location.href='./../home/home.html';
+                </script>";
         }
         else {
             $query  = "SELECT * FROM students";
@@ -49,6 +52,9 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
 }
 }
 else {
-    header('Location: ./../home/home.html');
+    echo "<script>
+                alert('PLease fill in all the details!');
+                window.location.href='./../home/home.html';
+                </script>";
 }
 ?>

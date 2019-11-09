@@ -144,7 +144,7 @@ echo "<br><br>";
 echo<<<_END
 <form action = "changepass.php" method="get">
 	<input type = "hidden" name = "userid" value = $stuinfo>
-	<input type = "submit" name = "submit"  value = "Change Password">
+	<input type = "submit" name = "submit"  value = "Change Password" onclick="return confirm('Are you sure?');">
 </form>
 _END;
 echo '<br><br><a href = "admin.html">Go Back</a>';
