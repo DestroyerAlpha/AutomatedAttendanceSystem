@@ -36,7 +36,7 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
             $r0 = htmlspecialchars($row[0]);
             $r1 = htmlspecialchars($row[1]);
             $r2 = htmlspecialchars($row[2]);
-            $r3 = htmlspecialchars($row[3});
+            $r3 = htmlspecialchars($row[3]);
             $r4 = htmlspecialchars($row[4]);
             if($r0 == $unsafename){
                 $_SESSION['stname']=$r1;
