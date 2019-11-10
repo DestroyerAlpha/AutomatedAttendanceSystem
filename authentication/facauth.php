@@ -13,12 +13,12 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
 
     // reference for sql injection : https://www.w3schools.com/php/php_mysql_prepared_statements.asp
     $query = $conn->prepare("SELECT * FROM faculty_info WHERE username = ? AND password = ?");
-   
     if ($query) {
         $query->bind_param('ss', $unsafename, $unsafepass);
         
         $query->execute();
         $result = $query->get_result();
+        // $row = $result->fetch_array();
         $num_rows = $result->num_rows;
         if (!$num_rows) {
             echo "<script>
@@ -29,6 +29,7 @@ if (!empty($_POST['name']) && !empty($_POST['pass'])) {
         else {
             $_SESSION['username'] = $unsafename;
             $_SESSION['password'] = $unsafepass;
+            // $_SESSION['name'] = $row['name'];
             header('Location: ./../faculty/dashboard.php');
         }
     }

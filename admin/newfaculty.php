@@ -12,18 +12,21 @@ if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['DOB']) && 
     $lname   = get_post($conn, 'lname');
     $dob     = get_post($conn, 'DOB');
     $password = get_post($conn, 'Password');
-    $userid     = get_post($conn, 'userid');
- 	$query    = "INSERT INTO faculty_info VALUES" . "('$userid','$password','$fname.$lname')";
+	$userid     = get_post($conn, 'userid');
+	$name = $fname." ".$lname;
+ 	$query    = "INSERT INTO faculty_info VALUES" . "('$userid','$password','$name')";
 	$result = $conn->query($query);
 	if (!$result)
 	{
-		echo (mysqli_error($conn)."<br><br>");
+		echo "      <script>
+            alert('Error creating user account');
+            window.location.href='./../admin/dashboard.php';
+			</script>";
 	}
-	else 
-	{
-		echo "INSERTED successfully<br><br>";
-	}
-	echo '<a href = "newfaculty.html">Go Back</a>';
+	echo "      <script>
+            alert('Successfully Created');
+            window.location.href='./../admin/dashboard.php';
+			</script>";
 }
 $result->close();
 $connection->close();

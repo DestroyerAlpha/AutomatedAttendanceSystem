@@ -21,23 +21,23 @@ if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['DOB']) && 
 	$result1 = $conn->query($query1);
 	if (!$result1)
 	{ 
-		echo (mysqli_error($conn)."<br><br>");
-	}
-	else 
-	{
-		echo "table created successfully<br><br>";
+		echo "      <script>
+            alert('Error creating user account');
+            window.location.href='./../admin/dashboard.php';
+            </script>";
 	}
 
 	$present = $userid."present";
 	$query2    = "CREATE TABLE $present (course_code varchar(256) NOT NULL,pdate date)";
 	$result2 = $conn->query($query2);
 	if (!$result2)
-	{ 
-		echo (mysqli_error($conn)."<br><br>");
-	}
-	else 
 	{
-		echo "table present created successfully<br><br>";
+		$query1    = "DROP TABLE $table";
+		$result1 = $conn->query($query1);
+		echo "      <script>
+            alert('Error creating user account');
+            window.location.href='./../admin/dashboard.php';
+			</script>";
 	}
 
 	$absent = $userid."absent";
@@ -45,35 +45,51 @@ if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['DOB']) && 
 	$result3 = $conn->query($query3);
 	if (!$result3)
 	{ 
-		echo (mysqli_error($conn)."<br><br>");
+		$query1    = "DROP TABLE $table";
+		$result1 = $conn->query($query1);
+		$query1    = "DROP TABLE $present";
+		$result1 = $conn->query($query1);
+		echo "      <script>
+            alert('Error creating user account');
+            window.location.href='./../admin/dashboard.php';
+			</script>";
 	}
-	else 
-	{
-		echo "table absent created successfully<br><br>";
-	}
-	
 	$query4    = "INSERT INTO student_info VALUES" . "('$userid','$password')";
 	$result4 = $conn->query($query4);
 	if (!$result4)
 	{ 
-		echo (mysqli_error($conn)."<br><br>");
+		$query1    = "DROP TABLE $table";
+		$result1 = $conn->query($query1);
+		$query1    = "DROP TABLE $present";
+		$result1 = $conn->query($query1);
+		$query1    = "DROP TABLE $absent";
+		$result1 = $conn->query($query1);
+		echo "      <script>
+            alert('Error creating user account');
+            window.location.href='./../admin/dashboard.php';
+			</script>";
 	}
-	else 
-	{
-		echo "INSERTED SUCCESSFULLY into student_info<br><br>";
-	}
-	
 	$query5    = "INSERT INTO students(username,name,dob,branch,batch) VALUES('$userid','$name','$dob','$branch','$batch')";					
 	$result5 = $conn->query($query5);
 	if (!$result5)
 	{ 
-		echo (mysqli_error($conn)."<br><br>");
+		$query1    = "DROP TABLE $table";
+		$result1 = $conn->query($query1);
+		$query1    = "DROP TABLE $present";
+		$result1 = $conn->query($query1);
+		$query1    = "DROP TABLE $absent";
+		$result1 = $conn->query($query1);
+		$query1    = "DELETE FROM student_info WHERE username='$userid'";
+		$result1 = $conn->query($query1);
+		echo "      <script>
+            alert('Error creating user account');
+            window.location.href='./../admin/dashboard.php';
+			</script>";
 	}
-	else 
-	{
-		echo "inserted successfully into students<br><br>";
-	}
-	echo '<a href = "newstudent.html">Go Back</a>';
+	echo "      <script>
+            alert('Successfully Created Student Account');
+            window.location.href='./../admin/dashboard.php';
+			</script>";
 }
 
 $conn->close();

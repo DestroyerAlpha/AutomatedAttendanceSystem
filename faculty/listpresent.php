@@ -4,6 +4,8 @@
 <?php
 session_start();
 require_once './../sql_login/login.php';
+$date = $_GET['date'];
+// $date = $_GET['date'];
 $conn = new mysqli($hostname, $username, $password, $database);
 if ($conn->connect_error) die("Fatal Error");
 $course = $_SESSION['course'];
@@ -15,7 +17,7 @@ echo "<tr><th>USERID</th></tr>";
 while($row = mysqli_fetch_array($result))
 {
 	$table1 = $row['username']."present";
-	$query1 = "SELECT * FROM $table1 WHERE course_code='$course'";
+	$query1 = "SELECT * FROM $table1 WHERE course_code='$course' and pdate = '$date'";
     $result1 = $conn->query($query1);
 	if($row1 = mysqli_fetch_array($result1))							
 	{

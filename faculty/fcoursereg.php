@@ -11,7 +11,11 @@ $conn = mysqli_connect($hostname,$username,$password,$database);
 
 if (!$conn)
 {
-    die('<p>Connection failed: <p>' . mysqli_connect_error());
+    // die('<p>Connection failed: <p>' . mysqli_connect_error());
+    echo "      <script>
+        alert('Connection failed');
+        window.location.href='./../faculty/dashboard.php';
+        </script>";
 }
 $username = $_SESSION['username'];
 $course_code = $_POST['ccode'];
@@ -21,6 +25,13 @@ $course_branch = $_POST['cbranch'];
 
 // $query1 = 'INSERT INTO courses(course_code,course_name,faculty_id,batch,branch) VALUES(?,?,?,?,?)';
 // $query1 = prepared_query($conn, $query1, [$course_code,$course_name,$username,$course_batch,$course_branch]);
+if(!isset($_POST['ccode']) && !isset($_POST['cname']) && !isset($_POST['cbatch']) && !isset($_POST['cbranch']))
+{
+    echo "      <script>
+        alert('Please fill some entry to insert course');
+        window.location.href='./../faculty/dashboard.php';
+        </script>";
+}
 
 $query1 = "INSERT INTO courses VALUES('$course_code','$course_name','$username',0,$course_batch,'$course_branch')";
 $result = mysqli_query($conn,$query1);
@@ -29,7 +40,11 @@ $result = mysqli_query($conn,$query1);
 if(!$result)
 {
     // header('Location: ./../faculty/dashboard.php');
-    echo "Failed to insert".mysqli_error($conn);
+    // echo "Failed to insert".mysqli_error($conn);
+    echo "      <script>
+        alert('Failed to insert');
+        window.location.href='./../faculty/dashboard.php';
+        </script>";
 }
 else
 {
@@ -38,7 +53,13 @@ else
     if(!mysqli_query($conn,$tableec))
     {
         // header('Location: ./../faculty/dashboard.php');
-        echo "Failed to create the course table";
+        // echo "";
+        echo "      <script>
+        alert('Failed to create the course table');
+        window.location.href='./../faculty/dashboard.php';
+        </script>";
+        $query1 = "DELETE FROM courses WHERE course_code='$course_code'";
+        $result = mysqli_query($conn,$query1);
     }
         
 
@@ -50,11 +71,21 @@ else
         if(!mysqli_query($conn,$tableca))
         {
             // header('Location: ./../faculty/dashboard.php');
-            echo "Failed to create course attendance table";
+            // echo "";
+            echo "      <script>
+                alert('Failed to create course attendance table');
+                window.location.href='./../faculty/dashboard.php';
+                </script>";
+            $query1 = "DROP TABLE '$course_code'";
+            $result = mysqli_query($conn,$query1);
         }
         else
-            echo "Course added successfully!";
-            echo "<a href=\"./../faculty/dashboard.php\">Click here to go back</a>";
+        {
+            echo "      <script>
+                alert('Course Added Succesfully');
+                window.location.href='./../faculty/dashboard.php';
+                </script>";
+        }
     }
 }
 

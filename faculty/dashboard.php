@@ -5,7 +5,7 @@ $conn = mysqli_connect($hostname,$username,$password,$database);
 $faculty_id = $_SESSION['username'];
 $query = "SELECT * FROM faculty_info WHERE username = '$faculty_id'";
 $result = mysqli_query($conn,$query);
-$row = mysqli_fetch_row($result);
+$row = mysqli_fetch_array($result);
 $faculty_name = $row['name'];
 $_SESSION['name'] = $faculty_name;
 if($_SESSION['login'] !== 'TRUE')
@@ -60,7 +60,7 @@ if (!$conn)
                 ?>
                 </ul>
                     <ul>
-                        <li><input type="submit" class="submit-button" name="in" value="View/Attendance" /></li><br>
+                        <li><input type="submit" class="submit-button" name="in" value="View Attendance" /></li><br>
                         <li><input type="submit" class="submit-button" name="in" value="Delete Course" onclick="return confirm('Are you sure?');" /></li>
                     </ul>
                 </form>

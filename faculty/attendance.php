@@ -21,7 +21,11 @@ $course_code = $_POST['course'];
         $conn = mysqli_connect($hostname,$username,$password,$database);
         if(!$conn)
         {
-            echo "Connect Error:".mysqli_error($conn);
+            // echo "Connect Error:".mysqli_error($conn);
+            echo "      <script>
+            alert('Connect Error');
+            window.location.href='./../faculty/dashboard.php';
+            </script>";
         }
         $faculty_id = $_SESSION['username'];
         echo $course_code;

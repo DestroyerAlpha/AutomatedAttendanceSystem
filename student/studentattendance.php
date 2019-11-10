@@ -44,7 +44,7 @@ if($_SESSION['login'] !== 'TRUE')
                     require_once './../sql_login/login.php';
                     $conn = new mysqli($hostname, $username, $password, $database);
                     if ($conn->connect_error) die("Fatal Error");
-                    echo $_SESSION['stuser'];
+                    // echo $_SESSION['stuser'];
                     $user_t = $_SESSION['stuser']."m";
                     $query  = "SELECT * FROM $user_t";
                     $result = $conn->query($query);
