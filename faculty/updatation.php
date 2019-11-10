@@ -139,7 +139,7 @@ if (!$conn)
                     // $row = mysqli_fetch_array($result);
                     // $absent = $row['absent'];
                     // $absent = $absent + 1;
-                    $newq = "UPDATE $table2 SET absent=$absent , present = $present WHERE course_code = '$course_code'";
+                    $newq = "UPDATE $table3 SET absent=$absent , present = $present WHERE course_code = '$course_code'";
                     $result = mysqli_query($conn,$newq);
                     if(!$result)
                     {
@@ -222,7 +222,7 @@ if (!$conn)
                 // $row = mysqli_fetch_array($result);
                 // $absent = $row['absent'];
                 // $absent = $absent + 1;
-                $newq = "UPDATE $table2 SET absent=$absent , present = $present WHERE course_code = '$course_code'";
+                $newq = "UPDATE $table3 SET absent=$absent , present = $present WHERE course_code = '$course_code'";
                 $result = mysqli_query($conn,$newq);
                 if(!$result)
                 {
@@ -235,7 +235,7 @@ if (!$conn)
             }
         }
         echo "      <script>
-                    alert('Added Attendance for $course_code $present $absent');
+                    alert('Added Attendance for $course_code');
                     window.location.href='./../faculty/dashboard.php';
                     </script>";
 ?>
