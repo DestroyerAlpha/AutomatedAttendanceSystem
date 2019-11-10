@@ -65,7 +65,6 @@ else
     }
     else
     {
-        echo "Course Deleted";
         $query = "DROP TABLE $course_code";
         $result = mysqli_query($conn,$query);
         if(!$result)
@@ -87,6 +86,10 @@ else
             window.location.href='./../faculty/dashboard.php';
             </script>";
         }
+        echo "      <script>
+            alert('Course Deleted');
+            window.location.href='./../faculty/dashboard.php';
+            </script>";
     }
 }
 ?>

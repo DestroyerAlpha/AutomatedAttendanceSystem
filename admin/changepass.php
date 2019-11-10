@@ -17,13 +17,14 @@ if(isset($_POST['password']) && $_POST['userid'])
 	$result = mysqli_query($conn,$query);
 	if($result)
 	{
-		echo '<a href = "changepass.php?userid='.$userid.'&submit=Change+Password">Go Back</a><br><br>';
-		exit("password updated successfully!<br>");
+		echo "      <script>
+            alert('Password Changed');
+            window.location.href='./../admin/dashboard.php';
+            </script>";
 	}
 	else
 	{
 		echo '<a href = "changepass.php?userid='.$userid.'&submit=Change+Password">Go Back</a><br><br>';
-		echo (mysqli_error($conn)."<br>");
 		exit();
 	}
 }
