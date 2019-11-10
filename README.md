@@ -5,6 +5,9 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/DestroyerAlpha/AutomatedAttendanceSystem/tree/master)
  An automated attendance system for SSL Project 2019
+
+ [YouTube Video](https://youtu.be/SB0fXWz5b8c)
+
 ## Steps to perform before using
 - Give **MySql** credentials in sql_login/login.php for MySql connection.
 - Run the website on localhost:8000/automate/automate.php.
