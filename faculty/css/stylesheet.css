@@ -8,8 +8,6 @@ body {
     margin: 0px;
     display: flex;
     flex-direction: column;
-    min-height: 400px;
-    margin-bottom: 100px;
 }
 
 .outer-section {
@@ -97,7 +95,7 @@ nav {
     font-size: 12px;
 }
 
-input {
+input[type=text] {
     margin: 15px 0;
     font-size: 16px;
     padding: 10px;
