@@ -66,7 +66,7 @@
         
         echo "      <script>
         alert('Successfully Created the Automated Files. Login on admin using details admin:admin');
-        window.location.href='./../hoome/home.html';
+        window.location.href='./../home/home.html';
         </script>";
     }
 
