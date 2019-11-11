@@ -130,10 +130,10 @@ if (!$conn)
                     $result1 = mysqli_query($conn, $query);
                     $present = 0;
                     if($result1)
-                        $present = mysqli_num_rows($result);
+                        $present = mysqli_num_rows($result1);
                     $absent = 0;
                     if($result)
-                        $absent = mysqli_num_rows($result1);
+                        $absent = mysqli_num_rows($result);
                     // $query2 = "SELECT * FROM $table2 WHERE course_code = '$course_code'";
                     // $result = mysqli_query($conn,$query2);
                     // $row = mysqli_fetch_array($result);
